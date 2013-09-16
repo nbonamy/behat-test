@@ -1,0 +1,3 @@
+transaction: "tr.transaction"
+negative transaction: "tr.transaction td.amount.negative"
+description: "td.description"
