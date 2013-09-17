@@ -6,6 +6,8 @@ use Behat\Behat\Exception\PendingException;
 use Behat\Mink\Exception\ExpectationException;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\MinkExtension\Context\MinkContext;
+use Behat\MinkExtension\Context\RawMinkContext;
+use Behat\Behat\Event\StepEvent;
 
 //
 // Require 3rd-party libraries here:
@@ -70,5 +72,17 @@ class FeatureContext extends BusinessContext
             next($lines);
         }
    }
+
+    /** @AfterStep */
+    /*public function failScreenshots(StepEvent $event)
+    {
+        if ($event->getResult() == StepEvent::FAILED) {
+            $path = 'screenshots';
+            mkdir($path);
+            $scenarioName = str_replace(' ', '_', $event->getStep()->getParent()->getTitle());
+            $filename = sprintf('fail_%s_%s.png', time(), $scenarioName);
+            $this->saveScreenshot($filename, $path);
+        }
+    }*/
 
 }

@@ -27,3 +27,15 @@ Feature: Angular
   	Internet
   	Remboursement
   	"""
+
+  Scenario Outline: More filters
+    When I fill in "filter" with "<value>"
+    Then I should see <result> "transaction" element
+
+    Examples:
+      | value | result |
+      | nt    | 3      |
+      | cou   | 2      |
+      | zzz   | 0      |
+      | s     | 3      |
+      |       | 5      |
