@@ -21,6 +21,12 @@ use Behat\Behat\Event\StepEvent;
  */
 class FeatureContext extends BusinessContext
 {
+
+    public function __construct(array $parameters)
+    {
+        $this->useContext('mantis', new MantisContext($parameters));
+    }
+
     /**
      * @Given /^I wait (\d+) second$/
      */
@@ -72,17 +78,5 @@ class FeatureContext extends BusinessContext
             next($lines);
         }
    }
-
-    /** @AfterStep */
-    /*public function failScreenshots(StepEvent $event)
-    {
-        if ($event->getResult() == StepEvent::FAILED) {
-            $path = 'screenshots';
-            mkdir($path);
-            $scenarioName = str_replace(' ', '_', $event->getStep()->getParent()->getTitle());
-            $filename = sprintf('fail_%s_%s.png', time(), $scenarioName);
-            $this->saveScreenshot($filename, $path);
-        }
-    }*/
 
 }
